@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malware Detection</title>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+    <!-- <link rel="stylesheet" href="index.css"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+</head>
+
+<body>
+  <header id="header">
+    <div class="logo">Malware Detection</div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Status</a>
+      <!-- <a href="#">Discord</a> -->
+    </nav>
+  </header>
+
+  <main id="main">
+    <div class="upload-container">
+        <h1 id="h1">Malware Detection Dashboard</h1>
+        <form id="file-form" action="/" method="post" enctype="multipart/form-data">
+            <input type="file" name="ft" id="file-upload" multiple hidden>
+            <label for="file-upload" class="label" id="label">Upload Files<br><span>
+                <div class="p-6 flex flex-col items-center justify-center clickable">
+                    <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 cursor-pointer" for="file-upload">
+                        <div class="flex flex-col items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-upload h-12 w-12 text-muted-foreground mb-2" data-darkreader-inline-stroke="" style="--darkreader-inline-stroke: currentColor;">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" x2="12" y1="3" y2="15">
+                            </line></svg>
+                        </div>
+                </div>
+                <br>
+                Only Executable Files(.exe, .dll, .bat)</span>
+            </label>
+            <p id="message"></p>
+        </form>
+      
+
+    <section class="file-analysis">
+      <h2 id="h2">File Analysis</h2>
+      <div class="stats">
+        <div>File Name:<br><span>N/A</span></div>
+        <div>File Size:<br><span>0.00 MB</span></div>
+        <div>File Type:<br><span>N/A</span></div>
+        <div>Is Malware:<br><span>{{ caption }}</span></div>
+      </div>
+    </section>
+    <button id="file-upload-btn" type="submit">
+      Check for Malware
+    </button> 
+</div>
+  </main>
+
+  <!-- <script src="index.js"></script> -->
+  <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+</body>
+</html>
